@@ -31,5 +31,6 @@ I also used the **Union Pattern** to implement the different wash types. Where e
 `~/CarWashSystem/src$ javac -d ../bin/ app/App.java`
 
 ### Run:
-**User Mode: **`~/CarWashSystem/bin$ java app.App user`
-**Admin Mode: **`~/CarWashSystem/bin$ java app.App admin`
+**User Mode:**`~/CarWashSystem/bin$ java app.App user`
+
+**Admin Mode:**`~/CarWashSystem/bin$ java app.App admin`
