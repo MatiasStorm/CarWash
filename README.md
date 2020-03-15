@@ -18,6 +18,7 @@ The whole project description is in the file 'CarWash.pdf'.
 ## Design and analysis
 During the desing process i first created a Use Case Diagram which I used to create a domain model. 
 During development I expanded on the domain model and in the end it evolved into a design class diagram of the final program.
+
 *(Pictures of the diagrams are located in the Digrams folder)*
 
 ### Design Patterns
