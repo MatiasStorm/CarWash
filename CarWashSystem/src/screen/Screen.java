@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+import app.Input;
+
 public class Screen{
+    Input input = new Input();
     Scanner scan = new Scanner(System.in);
 
 	public String askForWashCardId() {
         String idPattern = "[0-9]{4}";
-        System.out.print("Enter WashCard id (4-numbers): ");
-        String id = scan.nextLine();
-        while(!id.matches(idPattern)){
-            System.out.println("Invalid ID!");
-            System.out.print("Enter WashCard id (4-numbers): ");
-            id = scan.nextLine();
-        }
+        String message = "Enter WashCard id (4-numbers): ";
+        String id = input.getInput(message, idPattern);
 		return id;
     }
     
@@ -28,22 +26,9 @@ public class Screen{
 
     public Object displayMenu(String menuName, ArrayList items) {
         printMenu(menuName, items);
-        System.out.printf("Pick an option (1-%d): ", items.size());
-
-        int index = -1;
-        
-        while(index < 1 || index > items.size()){
-            if(scan.hasNextInt()){
-                index = scan.nextInt();
-            }
-            if(index < 1 || index > items.size()){
-                printMenu(menuName, items);
-                System.out.printf("\nYou have to pick a number between 1 and %d.\n", items.size());
-                System.out.printf("Pick an option (1-%d): ", items.size());
-                scan.nextLine();
-            }
-        }
-        scan.nextLine();
+        String message = String.format("Pick an option (1-%d): ", items.size());
+        String pattern = String.format("[1-%d]", items.size());
+        int index = Integer.parseInt(input.getInput(message, pattern));
         return items.get(index - 1);
     }
 
@@ -69,13 +54,9 @@ public class Screen{
     }
 
     public char yesNoOption(String question){
-        System.out.printf("%s [Y/n]? ", question);
-        String answer = scan.nextLine();
-        while(!answer.equals("y") && !answer.equals("n")){
-            System.out.println("\nYou have to type either 'y' or 'n'.");
-            System.out.printf("%s [Y/n]? ", question);
-            answer = scan.nextLine();
-        }
+        String message = String.format("%s [Y/n]? ", question);
+        String pattern = "Y|y|N|n";
+        String answer = input.getInput(message, pattern);
         return answer.toLowerCase().charAt(0);
     }
 
@@ -88,18 +69,10 @@ public class Screen{
 
     public int askForAmount(String message, int min, int max){
         System.out.printf("\n---- %s ----\n", message);
-        System.out.printf("Specify amount (%d - %d): ", min, max);
-        int amount = min - 1;
-        while(min > amount || amount > max){
-            if(scan.hasNextInt()){
-                amount = scan.nextInt();
-            }
-            if(min > amount || amount > max){
-                System.out.println("Invalid amount.");
-                System.out.printf("Specify amount (%d - %d): ", min, max);
-            }
-        }
-        scan.nextLine();
+        
+        String inputMessage = String.format("Specify amount (%d - %d): ", min, max);
+        String pattern = "[1-9]{1}|[1-9]{1}[0-9]{1,2}|1000";
+        int amount = Integer.parseInt(input.getInput(inputMessage, pattern));
         return amount;
     }
 
