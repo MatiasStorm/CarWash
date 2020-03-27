@@ -22,16 +22,18 @@ During development I expanded on the domain model and in the end it evolved into
 *(Pictures of the diagrams are located in the Digrams folder)*
 
 ### Design Patterns
-I actively used the **Command Patterne** to implement the options for the WashMachines menus. I used an abstract class `WashMachineOption`
+I actively used the **Command Pattern** to implement the options for the WashMachines menus. I used an abstract class `WashMachineOption`
 with an abstract method `execute()` as a base. Each of the options extends this base class and implements the `execute()` method.
 
-I also used the **Union Pattern** to implement the different wash types. Where each type extends an abstrac super class.
+I also used the **Union Pattern** to implement the different wash types. Where each type extends an abstract super class.
 
 ## Commands
 ### Compile:
 `~/CarWashSystem/src$ javac -d ../bin/ app/App.java`
 
 ### Run:
-**User Mode:**`~/CarWashSystem/bin$ java app.App user`
+**User Mode:**
+`~/CarWashSystem/bin$ java app.App user`
 
-**Admin Mode:**`~/CarWashSystem/bin$ java app.App admin`
+**Admin Mode:**
+`~/CarWashSystem/bin$ java app.App admin`
