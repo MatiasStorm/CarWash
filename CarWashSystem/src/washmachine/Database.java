@@ -13,7 +13,7 @@ import app.WashCard;
 
 class Database{
     final static String delim = ",";
-    final private String dataFileName = "bin/data/WashCardData.txt";
+    final private String dataFileName = "data/WashCardData.txt";
     private ArrayList<WashDataElement> washData;
     private int numberOfWashTypes = WashTypeFactory.getNumberOfWashTypes();
 
